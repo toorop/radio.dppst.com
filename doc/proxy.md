@@ -1,62 +1,62 @@
-# Proxy CORS Générique pour Cloudflare Workers
+# Generic CORS Proxy for Cloudflare Workers
 
-## Objectif
-Créer un proxy CORS générique en Go, déployable sur Cloudflare Workers via leur service Workers for Platforms, permettant de contourner les restrictions CORS pour différents types de requêtes HTTP.
+## Objective
+Create a generic CORS proxy in Go, deployable on Cloudflare Workers via their Workers for Platforms service, enabling CORS bypass for various types of HTTP requests.
 
-## Caractéristiques Techniques
+## Technical Specifications
 
 ### Technologies
-- **Langage** : Go
-- **Framework** : [workers](https://github.com/cloudflare/workers-sdk)
-- **Plateforme** : Cloudflare Workers
-- **Configuration** : YAML + Variables d'environnement
+- **Language**: Go
+- **Framework**: [workers](https://github.com/cloudflare/workers-sdk)
+- **Platform**: Cloudflare Workers
+- **Configuration**: YAML + Environment Variables
 
-### Points Clés
-1. **Performance** : Exécution rapide, temps de réponse < 100ms
-2. **Sécurité** : Protection contre les attaques courantes
-3. **Fiabilité** : Gestion des erreurs robuste
-4. **Maintenance** : Code clair et bien documenté
+### Key Points
+1. **Performance**: Fast execution, response time < 100ms
+2. **Security**: Protection against common attacks
+3. **Reliability**: Robust error handling
+4. **Maintenance**: Clear and well-documented code
 
-## Fonctionnalités
+## Features
 
-### 1. Proxy de Base
-- Endpoint principal : `/proxy`
-- Paramètres URL :
+### 1. Base Proxy
+- Main endpoint: `/proxy`
+- URL parameters:
   ```
-  /proxy?url=<URL_encodée>&method=<GET|POST|etc>&timeout=<durée>
+  /proxy?url=<encoded_URL>&method=<GET|POST|etc>&timeout=<duration>
   ```
-- Support de toutes les méthodes HTTP standards
-- Transmission des headers pertinents
-- Préservation du body pour POST/PUT
-- Gestion des timeouts
+- Support for all standard HTTP methods
+- Relevant header forwarding
+- Body preservation for POST/PUT
+- Timeout management
 
-### 2. Sécurité
-- Liste blanche de domaines autorisés
-- Rate limiting par IP (via Cloudflare)
-- Validation des URLs
-- Headers de sécurité automatiques
-- Protection contre :
-  - Injection de domaines non autorisés
-  - Attaques par déni de service
-  - Requêtes malformées
+### 2. Security
+- Allowed domains whitelist
+- Rate limiting per IP (via Cloudflare)
+- URL validation
+- Automatic security headers
+- Protection against:
+  - Unauthorized domain injection
+  - Denial of service attacks
+  - Malformed requests
 
 ### 3. CORS
-- Headers CORS configurables :
+- Configurable CORS headers:
   - Access-Control-Allow-Origin
   - Access-Control-Allow-Methods
   - Access-Control-Allow-Headers
   - Access-Control-Max-Age
-- Gestion automatique des requêtes OPTIONS
+- Automatic OPTIONS request handling
 
 ### 4. Monitoring
-- Logs structurés
-- Métriques Cloudflare :
-  - Latence
-  - Taux d'erreur
-  - Requêtes par minute
+- Structured logging
+- Cloudflare metrics:
+  - Latency
+  - Error rate
+  - Requests per minute
   - Status codes
 
-## Structure du Projet
+## Project Structure
 
 ```
 proxy/
@@ -96,7 +96,6 @@ security:
 cors:
   allowed_origins:
     - "http://localhost:*"
-    - "http://127.0.0.1"
     - "https://*.dppst.com"
   allowed_methods:
     - "GET"
@@ -109,40 +108,40 @@ worker:
   timeout: 30s
 ```
 
-## Étapes de Réalisation
+## Implementation Steps
 
-### Phase 1 : Setup Initial
-1. Créer un nouveau projet Go
-2. Configurer l'environnement Cloudflare Workers
-3. Mettre en place la CI/CD avec GitHub Actions
+### Phase 1: Initial Setup
+1. Create new Go project
+2. Configure Cloudflare Workers environment
+3. Set up CI/CD with GitHub Actions
 
-### Phase 2 : Développement Core
-1. Implémenter le handler de proxy de base
-2. Ajouter la validation des URLs
-3. Configurer les headers CORS
-4. Mettre en place la gestion des erreurs
+### Phase 2: Core Development
+1. Implement base proxy handler
+2. Add URL validation
+3. Configure CORS headers
+4. Set up error handling
 
-### Phase 3 : Sécurité
-1. Implémenter la liste blanche de domaines
-2. Ajouter la validation des requêtes
-3. Configurer les headers de sécurité
-4. Mettre en place le rate limiting
+### Phase 3: Security
+1. Implement domain whitelist
+2. Add request validation
+3. Configure security headers
+4. Set up rate limiting
 
-### Phase 4 : Tests et Documentation
-1. Écrire les tests unitaires
-2. Ajouter les tests d'intégration
-3. Documenter l'API
-4. Créer des exemples d'utilisation
+### Phase 4: Testing and Documentation
+1. Write unit tests
+2. Add integration tests
+3. Document API
+4. Create usage examples
 
-### Phase 5 : Déploiement
-1. Configurer wrangler.toml
-2. Mettre en place le pipeline de déploiement
-3. Tester en production
-4. Monitorer les performances
+### Phase 5: Deployment
+1. Configure wrangler.toml
+2. Set up deployment pipeline
+3. Test in production
+4. Monitor performance
 
-## Utilisation
+## Usage
 
-### Exemple en JavaScript
+### JavaScript Example
 ```javascript
 async function fetchWithProxy(url, options = {}) {
   const proxyUrl = 'https://proxy.workers.dev/proxy';
@@ -158,7 +157,7 @@ async function fetchWithProxy(url, options = {}) {
 }
 ```
 
-### Exemple pour les Radios
+### Radio Example
 ```javascript
 const metadata = await fetchWithProxy(
   'https://radio.rtbf.be/c21/mp3-160/me',
@@ -166,45 +165,45 @@ const metadata = await fetchWithProxy(
 );
 ```
 
-## Déploiement
+## Deployment
 
-### Prérequis
-1. Compte Cloudflare Workers
-2. wrangler CLI installé
-3. Go 1.21 ou supérieur
+### Prerequisites
+1. Cloudflare Workers account
+2. wrangler CLI installed
+3. Go 1.21 or higher
 
-### Commandes
+### Commands
 ```bash
-# Développement local
+# Local development
 wrangler dev
 
-# Déploiement
+# Deployment
 wrangler deploy
 ```
 
-## Monitoring et Maintenance
+## Monitoring and Maintenance
 
-### Surveillance
-- Utiliser Cloudflare Analytics
-- Configurer des alertes sur :
-  - Taux d'erreur élevé
-  - Latence anormale
-  - Utilisation excessive
+### Monitoring
+- Use Cloudflare Analytics
+- Configure alerts for:
+  - High error rate
+  - Abnormal latency
+  - Excessive usage
 
 ### Maintenance
-- Mises à jour régulières des dépendances
-- Revue périodique des domaines autorisés
-- Ajustement des limites selon l'usage
+- Regular dependency updates
+- Periodic review of allowed domains
+- Limit adjustments based on usage
 
 ## Limitations
-- Taille maximale des requêtes : 100MB
-- Timeout maximum : 30 secondes
-- Rate limit : selon le plan Cloudflare
-- Certains headers peuvent être modifiés par Cloudflare
+- Maximum request size: 100MB
+- Maximum timeout: 30 seconds
+- Rate limit: based on Cloudflare plan
+- Some headers may be modified by Cloudflare
 
-## Prochaines Évolutions Possibles
-1. Support de WebSocket
-2. Cache configurable
-3. Compression des réponses
-4. Support de plus de formats de métadonnées
-5. Interface d'administration
+## Future Enhancements
+1. WebSocket support
+2. Configurable caching
+3. Response compression
+4. Enhanced metadata format support
+5. Admin interface
