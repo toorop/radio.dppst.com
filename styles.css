@@ -1,0 +1,222 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Nord Light Theme */
+body.nord-light {
+    --background: #ECEFF4;
+    --text-primary: #2E3440;
+    --text-secondary: #4C566A;
+    --card-background: rgba(216, 222, 233, 0.8);
+    --card-shadow: 0 8px 32px rgba(46, 52, 64, 0.1);
+    --button-bg: #88C0D0;
+    --button-hover: #81A1C1;
+    --select-bg: #D8DEE9;
+    --select-option-bg: #E5E9F0;
+    --slider-bg: #88C0D0;
+    --slider-thumb: #5E81AC;
+}
+
+/* Nord Dark Theme */
+body.nord-dark {
+    --background: #2E3440;
+    --text-primary: #D8DEE9;
+    --text-secondary: #A3BE8C;
+    --card-background: rgba(46, 52, 64, 0.8);
+    --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --button-bg: #88C0D0;
+    --button-hover: #81A1C1;
+    --select-bg: #3B4252;
+    --select-option-bg: #434C5E;
+    --slider-bg: #88C0D0;
+    --slider-thumb: #5E81AC;
+}
+
+/* Styles généraux */
+body {
+    background: var(--background);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-primary);
+}
+
+.container {
+    background: var(--card-background);
+    border-radius: 15px;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: var(--card-shadow);
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: var(--text-primary);
+}
+
+.radio-player {
+    text-align: center;
+}
+
+.radio-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#radio-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    margin-right: 20px;
+    object-fit: cover;
+}
+
+.radio-details {
+    text-align: left;
+}
+
+#radio-name {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+#radio-status {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.controls {
+    margin-bottom: 20px;
+}
+
+.control-btn {
+    background: var(--button-bg);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.control-btn:hover {
+    transform: scale(1.1);
+    background: var(--button-hover);
+}
+
+#volume {
+    width: 100%;
+    max-width: 200px;
+    margin-top: 10px;
+    -webkit-appearance: none;
+    background: var(--slider-bg);
+    border-radius: 5px;
+    height: 5px;
+}
+
+#volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background: var(--slider-thumb);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#radio-select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    background: var(--select-bg);
+    color: var(--text-primary);
+}
+
+#radio-select option {
+    background: var(--select-option-bg);
+    color: var(--text-primary);
+}
+
+/* Switch de thème */
+.theme-switch-wrapper {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #4C566A;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #ECEFF4;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #88C0D0;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+    }
+
+    #radio-logo {
+        width: 80px;
+        height: 80px;
+    }
+
+    #radio-name {
+        font-size: 1.2rem;
+    }
+
+    .theme-switch-wrapper {
+        top: 10px;
+        right: 10px;
+    }
+}
