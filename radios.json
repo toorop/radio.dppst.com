@@ -1,0 +1,82 @@
+[
+    {
+        "value": "https://radio.rtbf.be/c21/mp3-160/me",
+        "name": "Classic 21",
+        "logo": "https://www.rtbf.be/c21/static/images/logo-classic21.png"
+    },
+    {
+        "value": "https://radio.rtbf.be/c21-60s/mp3-128/me",
+        "name": "Classic 21 60's",
+        "logo": "https://www.rtbf.be/c21/static/images/logo-classic21.png"
+    },
+    {
+        "value": "https://radio.rtbf.be/c21-70s/mp3-128/me",
+        "name": "Classic 21 70's",
+        "logo": "https://www.rtbf.be/c21/static/images/logo-classic21.png"
+    },
+    {
+        "value": "https://radio.rtbf.be/c21-80s/mp3-128/me",
+        "name": "Classic 21 80's Hits",
+        "logo": "https://www.rtbf.be/c21/static/images/logo-classic21.png"
+    },
+    {
+        "value": "https://radio.rtbf.be/c21-80nw/mp3-128/me",
+        "name": "Classic 21 80's New Wave",
+        "logo": "https://www.rtbf.be/c21/static/images/logo-classic21.png"
+    },
+    {
+        "value": "https://radio.rtbf.be/c21-90s/mp3-128/me",
+        "name": "Classic 21 90's",
+        "logo": "https://www.rtbf.be/c21/static/images/logo-classic21.png"
+    },
+    {
+        "value": "https://radio.rtbf.be/c21-blues/mp3-128/me",
+        "name": "Classic 21 Blues",
+        "logo": "https://www.rtbf.be/c21/static/images/logo-classic21.png"
+    },
+    {
+        "value": "https://radio.rtbf.be/c21-metal/mp3-128/me",
+        "name": "Classic 21 Metal",
+        "logo": "https://www.rtbf.be/c21/static/images/logo-classic21.png"
+    },
+    {
+        "value": "https://radio.rtbf.be/c21-route66/mp3-128/me",
+        "name": "Classic 21 Route 66",
+        "logo": "https://www.rtbf.be/c21/static/images/logo-classic21.png"
+    },
+    {
+        "value": "https://radio.rtbf.be/c21-soul/mp3-128/me",
+        "name": "Classic 21 Soulpower",
+        "logo": "https://www.rtbf.be/c21/static/images/logo-classic21.png"
+    },
+    {
+        "value": "https://radio.rtbf.be/c21-njr/mp3-128/me",
+        "name": "Classic 21 Noir Jaune Rock",
+        "logo": "https://www.rtbf.be/c21/static/images/logo-classic21.png"
+    },
+    {
+        "value": "https://radio.rtbf.be/c21-live/mp3-128/me",
+        "name": "Classic 21 Live",
+        "logo": "https://www.rtbf.be/c21/static/images/logo-classic21.png"
+    },
+    {
+        "value": "http://radiomeuh.ice.infomaniak.ch/radiomeuh-128.mp3",
+        "name": "Radio Meuh",
+        "logo": "https://radiomeuh.com/wp-content/uploads/2023/02/cropped-logo-meuh-2023.png"
+    },
+    {
+        "value": "https://live.tiarefm.pf:8443/tiarefm",
+        "name": "Tiare FM",
+        "logo": "https://www.radio.fr/100/tiarefm.png"
+    },
+    {
+        "value": "https://exofmreunion.ice.infomaniak.ch/exofmreunion-64.aac",
+        "name": "EXO FM Réunion",
+        "logo": "https://station-images-prod.radio-assets.com/300/exofmreunion.png"
+    },
+    {
+        "value": "https://stream4.vestaradio.com/RADIOPIKAN",
+        "name": "Radio Pikan",
+        "logo": "https://www.radio.de/images/broadcasts/49/81/41644/1/c300.png"
+    }
+] 

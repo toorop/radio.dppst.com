@@ -5,12 +5,98 @@ const radioSelect = document.getElementById('radio-select');
 const radioName = document.getElementById('radio-name');
 const radioStatus = document.getElementById('radio-status');
 const radioLogo = document.getElementById('radio-logo');
-const currentTrack = document.getElementById('current-track');
 const themeToggle = document.getElementById('theme-toggle');
 
 let isPlaying = false;
 let hasPlayedFirstTime = false; // Pour détecter la première sélection
-let icecastPlayer = null; // Instance du lecteur Icecast
+let radios = []; // Pour stocker les radios chargées depuis le JSON
+let choicesInstance = null; // Pour stocker l'instance de Choices.js
+
+// Charger les radios depuis le fichier JSON
+fetch('radios.json')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erreur lors du chargement des radios');
+        }
+        return response.json();
+    })
+    .then(data => {
+        radios = data;
+        // Remplir le sélecteur avec les options
+        populateRadioSelect();
+        // Initialiser Choices.js
+        initChoices();
+        // Charger la dernière radio écoutée depuis localStorage
+        loadLastRadio();
+    })
+    .catch(error => {
+        console.error('Erreur:', error);
+        radioStatus.textContent = 'Erreur de chargement des radios';
+    });
+
+// Fonction pour initialiser Choices.js
+function initChoices() {
+    choicesInstance = new Choices(radioSelect, {
+        searchEnabled: true,
+        searchPlaceholderValue: 'Rechercher une radio...',
+        itemSelectText: '',
+        noResultsText: 'Aucun résultat trouvé',
+        noChoicesText: 'Aucune radio disponible',
+        searchResultLimit: 50,
+        renderChoiceLimit: 50,
+        placeholder: true,
+        placeholderValue: 'Choisir une radio',
+        searchFields: ['label'],
+        fuseOptions: {
+            // Options pour la recherche floue
+            threshold: 0.3, // Plus la valeur est basse, plus la correspondance doit être précise
+            ignoreLocation: true, // Ignorer l'emplacement du terme dans la chaîne
+            keys: ['label']
+        }
+    });
+
+    // Écouter les changements de sélection
+    radioSelect.addEventListener('choice', function() {
+        changeRadio();
+    });
+}
+
+// Fonction pour remplir le sélecteur avec les options de radio
+function populateRadioSelect() {
+    // Vider le sélecteur sauf l'option par défaut
+    while (radioSelect.options.length > 1) {
+        radioSelect.remove(1);
+    }
+    
+    // Ajouter les radios depuis le tableau
+    radios.forEach(radio => {
+        const option = document.createElement('option');
+        option.value = radio.value;
+        option.textContent = radio.name;
+        option.setAttribute('data-name', radio.name);
+        option.setAttribute('data-logo', radio.logo);
+        radioSelect.appendChild(option);
+    });
+}
+
+// Fonction pour charger la dernière radio écoutée
+function loadLastRadio() {
+    const lastRadio = localStorage.getItem('lastRadio');
+    if (lastRadio) {
+        for (let i = 0; i < radioSelect.options.length; i++) {
+            if (radioSelect.options[i].value === lastRadio) {
+                // Mettre à jour la sélection dans Choices.js
+                if (choicesInstance) {
+                    choicesInstance.setChoiceByValue(lastRadio);
+                } else {
+                    radioSelect.selectedIndex = i;
+                }
+                changeRadio(); // Charger la dernière radio automatiquement
+                break;
+            }
+        }
+    }
+}
 
 // Charger le thème sauvegardé depuis localStorage
 let isDarkTheme = localStorage.getItem('theme') === 'dark';
@@ -20,25 +106,33 @@ if (isDarkTheme) {
     themeToggle.checked = true;
 }
 
-// Initialisation au démarrage : pas de "Chargement..."
-currentTrack.textContent = 'Aucune radio sélectionnée';
-
-// Charger la dernière radio écoutée depuis localStorage
-const lastRadio = localStorage.getItem('lastRadio');
-if (lastRadio) {
-    for (let i = 0; i < radioSelect.options.length; i++) {
-        if (radioSelect.options[i].value === lastRadio) {
-            radioSelect.selectedIndex = i;
-            changeRadio(); // Charger la dernière radio automatiquement
-            break;
-        }
-    }
-}
-
+// Ajouter les écouteurs d'événements
 playPauseBtn.addEventListener('click', togglePlayPause);
 volumeControl.addEventListener('input', adjustVolume);
 radioSelect.addEventListener('change', changeRadio);
 themeToggle.addEventListener('change', toggleTheme);
+
+// Gestion des événements de l'audio
+audioPlayer.addEventListener('playing', () => {
+    radioStatus.textContent = 'En cours de lecture';
+    playPauseBtn.textContent = '⏸️';
+    isPlaying = true;
+});
+
+audioPlayer.addEventListener('pause', () => {
+    radioStatus.textContent = 'Arrêté';
+    playPauseBtn.textContent = '▶️';
+    isPlaying = false;
+});
+
+audioPlayer.addEventListener('waiting', () => {
+    radioStatus.textContent = 'Chargement...';
+});
+
+audioPlayer.addEventListener('error', (e) => {
+    console.error('Erreur de lecture audio:', e);
+    radioStatus.textContent = 'Erreur';
+});
 
 // Gestion de l'erreur du logo
 radioLogo.addEventListener('error', () => {
@@ -46,24 +140,20 @@ radioLogo.addEventListener('error', () => {
 });
 
 function togglePlayPause() {
-    if (!icecastPlayer) return;
-
-    if (isPlaying) {
-        icecastPlayer.pause();
-        playPauseBtn.textContent = '▶️';
-        radioStatus.textContent = 'Arrêté';
+    if (audioPlayer.paused) {
+        const playPromise = audioPlayer.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(error => {
+                console.error('Erreur lors de la lecture:', error);
+            });
+        }
     } else {
-        icecastPlayer.play();
-        playPauseBtn.textContent = '⏸️';
-        radioStatus.textContent = 'En cours de lecture';
+        audioPlayer.pause();
     }
-    isPlaying = !isPlaying;
 }
 
 function adjustVolume() {
-    if (icecastPlayer) {
-        icecastPlayer.setVolume(volumeControl.value);
-    }
+    audioPlayer.volume = volumeControl.value;
 }
 
 function changeRadio() {
@@ -72,13 +162,11 @@ function changeRadio() {
         radioName.textContent = 'Sélectionne une radio';
         radioStatus.textContent = 'Arrêté';
         radioLogo.src = 'radio-logo.svg';
-        currentTrack.textContent = 'Aucune radio sélectionnée';
         
-        // Arrêter le lecteur existant s'il y en a un
-        if (icecastPlayer) {
-            icecastPlayer.destroy();
-            icecastPlayer = null;
-        }
+        // Arrêter l'audio
+        audioPlayer.pause();
+        audioPlayer.src = '';
+        audioPlayer.load();
         
         isPlaying = false;
         playPauseBtn.textContent = '▶️';
@@ -89,81 +177,41 @@ function changeRadio() {
     const stationName = selectedOption.getAttribute('data-name');
     const streamUrl = selectedOption.value;
     
+    // Mettre à jour l'interface
     radioName.textContent = stationName;
-    radioLogo.src = logoUrl || 'radio-logo.svg'; // Utilise l'URL ou fallback
-    currentTrack.textContent = 'Chargement des métadonnées...';
+    radioLogo.src = logoUrl || 'radio-logo.svg';
     radioStatus.textContent = 'Chargement...';
 
     // Sauvegarder la radio sélectionnée dans localStorage
     localStorage.setItem('lastRadio', streamUrl);
 
-    // Détruire l'ancien lecteur s'il existe
-    if (icecastPlayer) {
-        icecastPlayer.destroy();
-    }
-
-    // Créer une nouvelle instance du lecteur Icecast avec des callbacks pour les métadonnées
-    icecastPlayer = new IcecastMetadataPlayer(streamUrl, {
-        metadataTypes: ["icy", "ogg"], // Prendre en charge les deux types de métadonnées
-        onMetadata: handleMetadata,
-        onError: handlePlayerError,
-        onStreamStart: () => {
-            radioStatus.textContent = 'En cours de lecture';
-            playPauseBtn.textContent = '⏸️';
-            isPlaying = true;
-        },
-        onStreamEnd: () => {
-            radioStatus.textContent = 'Arrêté';
-            playPauseBtn.textContent = '▶️';
-            isPlaying = false;
-        },
-        onPlay: () => {
-            radioStatus.textContent = 'En cours de lecture';
-            playPauseBtn.textContent = '⏸️';
-            isPlaying = true;
-        },
-        onPause: () => {
-            radioStatus.textContent = 'Arrêté';
-            playPauseBtn.textContent = '▶️';
-            isPlaying = false;
-        },
-        onReconnectAttempt: (attempt, max) => {
-            radioStatus.textContent = `Reconnexion (${attempt}/${max})...`;
-        },
-        onReconnectFailure: () => {
-            radioStatus.textContent = 'Échec de reconnexion';
-            currentTrack.textContent = 'Erreur de connexion';
-        }
-    });
-
-    // Définir le volume initial
-    icecastPlayer.setVolume(volumeControl.value);
-
-    // Lancer la lecture automatiquement lors de la première sélection
-    if (!hasPlayedFirstTime) {
-        icecastPlayer.play();
-        hasPlayedFirstTime = true;
-    } else if (isPlaying) {
-        icecastPlayer.play();
-    }
-}
-
-function handleMetadata(metadata) {
-    console.log('Métadonnées reçues:', metadata);
+    // Mémoriser l'état de lecture actuel
+    const shouldAutoPlay = !hasPlayedFirstTime || isPlaying;
     
-    if (metadata && metadata.data) {
-        // Pour l'instant, on affiche simplement que la radio est en cours de lecture
-        // car les métadonnées ne sont pas disponibles à cause des restrictions CORS
-        currentTrack.textContent = 'Radio en cours de lecture';
-    } else {
-        currentTrack.textContent = 'Radio en cours de lecture';
-    }
-}
+    // Configurer le lecteur audio
+    audioPlayer.pause();
+    audioPlayer.src = streamUrl;
+    audioPlayer.load();
 
-function handlePlayerError(error) {
-    console.error('Erreur du lecteur:', error);
-    radioStatus.textContent = 'Erreur de lecture';
-    currentTrack.textContent = 'Erreur de métadonnées';
+    // Définir le volume
+    audioPlayer.volume = volumeControl.value;
+
+    // Lancer la lecture si nécessaire
+    if (shouldAutoPlay) {
+        const playPromise = audioPlayer.play();
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                if (!hasPlayedFirstTime) {
+                    hasPlayedFirstTime = true;
+                }
+            }).catch(error => {
+                console.warn("Lecture automatique bloquée par le navigateur:", error);
+                radioStatus.textContent = 'Cliquez sur ▶️ pour lancer la lecture';
+                isPlaying = false;
+                playPauseBtn.textContent = '▶️';
+            });
+        }
+    }
 }
 
 function toggleTheme() {

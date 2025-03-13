@@ -7,8 +7,6 @@ Create a generic CORS proxy in Go, deployable on Cloudflare Workers via their Wo
 
 ### Technologies
 - **Language**: Go
-- **Framework**: [workers](https://github.com/cloudflare/workers-sdk)
-- **Platform**: Cloudflare Workers
 - **Configuration**: YAML + Environment Variables
 
 ### Key Points
@@ -23,7 +21,7 @@ Create a generic CORS proxy in Go, deployable on Cloudflare Workers via their Wo
 - Main endpoint: `/proxy`
 - URL parameters:
   ```
-  /proxy?url=<encoded_URL>&method=<GET|POST|etc>&timeout=<duration>
+  /proxy?url=URL
   ```
 - Support for all standard HTTP methods
 - Relevant header forwarding
@@ -32,7 +30,6 @@ Create a generic CORS proxy in Go, deployable on Cloudflare Workers via their Wo
 
 ### 2. Security
 - Allowed domains whitelist
-- Rate limiting per IP (via Cloudflare)
 - URL validation
 - Automatic security headers
 - Protection against:

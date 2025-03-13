@@ -6,6 +6,10 @@
     <title>Lecteur Radio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/svg+xml" href="radio-logo.svg">
+    <!-- Ajout de Choices.js (alternative à Select2 sans jQuery) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    
 </head>
 <body class="nord-light">
     <div class="theme-switch-wrapper">
@@ -22,7 +26,6 @@
                 <div class="radio-details">
                     <h2 id="radio-name">Sélectionne une radio</h2>
                     <p id="radio-status">Arrêté</p>
-                    <p id="current-track">Chargement...</p> <!-- Ajout pour afficher le titre en cours -->
                 </div>
             </div>
             <div class="controls">
@@ -31,24 +34,11 @@
             </div>
             <select id="radio-select">
                 <option value="">Choisir une radio</option>
-                <option value="https://radio.rtbf.be/c21/mp3-160/me" data-name="Classic 21" data-logo="https://www.rtbf.be/c21/static/images/logo-classic21.png">Classic 21</option>
-                <option value="https://radio.rtbf.be/c21-60s/mp3-128/me" data-name="Classic 21 60's" data-logo="https://www.rtbf.be/c21/static/images/logo-classic21.png">Classic 21 60's</option>
-                <option value="https://radio.rtbf.be/c21-70s/mp3-128/me" data-name="Classic 21 70's" data-logo="https://www.rtbf.be/c21/static/images/logo-classic21.png">Classic 21 70's</option>
-                <option value="https://radio.rtbf.be/c21-80s/mp3-128/me" data-name="Classic 21 80's Hits" data-logo="https://www.rtbf.be/c21/static/images/logo-classic21.png">Classic 21 80's Hits</option>
-                <option value="https://radio.rtbf.be/c21-80nw/mp3-128/me" data-name="Classic 21 80's New Wave" data-logo="https://www.rtbf.be/c21/static/images/logo-classic21.png">Classic 21 80's New Wave</option>
-                <option value="https://radio.rtbf.be/c21-90s/mp3-128/me" data-name="Classic 21 90's" data-logo="https://www.rtbf.be/c21/static/images/logo-classic21.png">Classic 21 90's</option>
-                <option value="https://radio.rtbf.be/c21-blues/mp3-128/me" data-name="Classic 21 Blues" data-logo="https://www.rtbf.be/c21/static/images/logo-classic21.png">Classic 21 Blues</option>
-                <option value="https://radio.rtbf.be/c21-metal/mp3-128/me" data-name="Classic 21 Metal" data-logo="https://www.rtbf.be/c21/static/images/logo-classic21.png">Classic 21 Metal</option>
-                <option value="https://radio.rtbf.be/c21-route66/mp3-128/me" data-name="Classic 21 Route 66" data-logo="https://www.rtbf.be/c21/static/images/logo-classic21.png">Classic 21 Route 66</option>
-                <option value="https://radio.rtbf.be/c21-soul/mp3-128/me" data-name="Classic 21 Soulpower" data-logo="https://www.rtbf.be/c21/static/images/logo-classic21.png">Classic 21 Soulpower</option>
-                <option value="https://radio.rtbf.be/c21-njr/mp3-128/me" data-name="Classic 21 Noir Jaune Rock" data-logo="https://www.rtbf.be/c21/static/images/logo-classic21.png">Classic 21 Noir Jaune Rock</option>
-                <option value="https://radio.rtbf.be/c21-live/mp3-128/me" data-name="Classic 21 Live" data-logo="https://www.rtbf.be/c21/static/images/logo-classic21.png">Classic 21 Live</option>
-                <option value="http://radiomeuh.ice.infomaniak.ch/radiomeuh-128.mp3" data-name="Radio Meuh" data-logo="https://radiomeuh.com/wp-content/uploads/2023/02/cropped-logo-meuh-2023.png">Radio Meuh</option>
+                <!-- Les options de radio seront chargées dynamiquement depuis le fichier JSON -->
             </select>
         </div>
     </div>
     <audio id="audio-player"></audio>
-    <script src="js/icecast-metadata-player.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
