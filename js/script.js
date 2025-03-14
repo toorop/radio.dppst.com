@@ -188,6 +188,13 @@ function changeRadio() {
     // Mémoriser l'état de lecture actuel
     const shouldAutoPlay = !hasPlayedFirstTime || isPlaying;
     
+    // Vérifier si le navigateur supporte le format audio
+    if (!audioPlayer.canPlayType('audio/mpeg')) {
+        radioStatus.textContent = 'Format audio non supporté par votre navigateur';
+        console.error('Le navigateur ne supporte pas le format audio MP3');
+        return;
+    }
+
     // Configurer le lecteur audio
     audioPlayer.pause();
     audioPlayer.src = streamUrl;
@@ -205,8 +212,14 @@ function changeRadio() {
                     hasPlayedFirstTime = true;
                 }
             }).catch(error => {
-                console.warn("Lecture automatique bloquée par le navigateur:", error);
-                radioStatus.textContent = 'Cliquez sur ▶️ pour lancer la lecture';
+                console.warn("Erreur de lecture:", error);
+                if (error.name === 'NotSupportedError') {
+                    radioStatus.textContent = 'Format audio non supporté';
+                } else if (error.name === 'NotAllowedError') {
+                    radioStatus.textContent = 'Lecture bloquée par le navigateur. Cliquez sur ▶️';
+                } else {
+                    radioStatus.textContent = 'Erreur de lecture. Vérifiez la console';
+                }
                 isPlaying = false;
                 playPauseBtn.textContent = '▶️';
             });

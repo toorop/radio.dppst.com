@@ -2,62 +2,62 @@
     {
         "value": "https://radio.rtbf.be/c21/mp3-160/me",
         "name": "Classic 21",
-        "logo": "https://www.rtbf.be/c21/static/images/logo-classic21.png"
+        "logo": "https://www.radio.fr/300/classic21.jpeg?version=f88d5ed6f3ba6807b04a286c90cd3f49"
     },
     {
         "value": "https://radio.rtbf.be/c21-60s/mp3-128/me",
         "name": "Classic 21 60's",
-        "logo": "https://www.rtbf.be/c21/static/images/logo-classic21.png"
+        "logo": "https://www.radio.fr/300/classic21.jpeg?version=f88d5ed6f3ba6807b04a286c90cd3f49"
     },
     {
         "value": "https://radio.rtbf.be/c21-70s/mp3-128/me",
         "name": "Classic 21 70's",
-        "logo": "https://www.rtbf.be/c21/static/images/logo-classic21.png"
+        "logo": "https://www.radio.fr/300/classic21.jpeg?version=f88d5ed6f3ba6807b04a286c90cd3f49"
     },
     {
         "value": "https://radio.rtbf.be/c21-80s/mp3-128/me",
         "name": "Classic 21 80's Hits",
-        "logo": "https://assets.maradio.be/stationimages/20_programme_image.png"
+        "logo": "https://www.radio.fr/300/classic21.jpeg?version=f88d5ed6f3ba6807b04a286c90cd3f49"
     },
     {
         "value": "https://radio.rtbf.be/c21-80nw/mp3-128/me",
         "name": "Classic 21 80's New Wave",
-        "logo": "https://www.rtbf.be/c21/static/images/logo-classic21.png"
+        "logo": "https://www.radio.fr/300/classic21.jpeg?version=f88d5ed6f3ba6807b04a286c90cd3f49"
     },
     {
         "value": "https://radio.rtbf.be/c21-90s/mp3-128/me",
         "name": "Classic 21 90's",
-        "logo": "https://www.rtbf.be/c21/static/images/logo-classic21.png"
+        "logo": "https://www.radio.fr/300/classic21.jpeg?version=f88d5ed6f3ba6807b04a286c90cd3f49"
     },
     {
         "value": "https://radio.rtbf.be/c21-blues/mp3-128/me",
         "name": "Classic 21 Blues",
-        "logo": "https://www.rtbf.be/c21/static/images/logo-classic21.png"
+        "logo": "https://www.radio.fr/300/classic21.jpeg?version=f88d5ed6f3ba6807b04a286c90cd3f49"
     },
     {
         "value": "https://radio.rtbf.be/c21-metal/mp3-128/me",
         "name": "Classic 21 Metal",
-        "logo": "https://www.rtbf.be/c21/static/images/logo-classic21.png"
+        "logo": "https://www.radio.fr/300/classic21.jpeg?version=f88d5ed6f3ba6807b04a286c90cd3f49"
     },
     {
         "value": "https://radio.rtbf.be/c21-route66/mp3-128/me",
         "name": "Classic 21 Route 66",
-        "logo": "https://www.rtbf.be/c21/static/images/logo-classic21.png"
+        "logo": "https://www.radio.fr/300/classic21.jpeg?version=f88d5ed6f3ba6807b04a286c90cd3f49"
     },
     {
         "value": "https://radio.rtbf.be/c21-soul/mp3-128/me",
         "name": "Classic 21 Soulpower",
-        "logo": "https://www.rtbf.be/c21/static/images/logo-classic21.png"
+        "logo": "https://www.radio.fr/300/classic21.jpeg?version=f88d5ed6f3ba6807b04a286c90cd3f49"
     },
     {
         "value": "https://radio.rtbf.be/c21-njr/mp3-128/me",
         "name": "Classic 21 Noir Jaune Rock",
-        "logo": "https://www.rtbf.be/c21/static/images/logo-classic21.png"
+        "logo": "https://www.radio.fr/300/classic21.jpeg?version=f88d5ed6f3ba6807b04a286c90cd3f49"
     },
     {
         "value": "https://radio.rtbf.be/c21-live/mp3-128/me",
         "name": "Classic 21 Live",
-        "logo": "https://www.rtbf.be/c21/static/images/logo-classic21.png"
+        "logo": "https://www.radio.fr/300/classic21.jpeg?version=f88d5ed6f3ba6807b04a286c90cd3f49"
     },
     {
         "value": "http://radiomeuh.ice.infomaniak.ch/radiomeuh-128.mp3",
@@ -78,5 +78,50 @@
         "value": "https://stream4.vestaradio.com/RADIOPIKAN",
         "name": "Radio Pikan",
         "logo": "https://www.radio.de/images/broadcasts/49/81/41644/1/c300.png"
+    },
+    {
+        "value": "https://icecast.radiofrance.fr/franceinter-midfi.mp3",
+        "name": "France Inter",
+        "logo": "https://www.radiofrance.fr/sites/default/files/2020-07/france_inter_logo_2017.png"
+    },
+    {
+        "value": "https://icecast.radiofrance.fr/franceinfo-midfi.mp3",
+        "name": "France Info",
+        "logo": "https://www.radiofrance.fr/sites/default/files/2020-07/france_info_logo_2017.png"
+    },
+    {
+        "value": "http://cdn.nrjaudio.fm/audio1/fr/30001/mp3_128.mp3?origine=fluxradios",
+        "name": "RTL",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/RTL_logo.svg/1200px-RTL_logo.svg.png"
+    },
+    {
+        "value": "https://scdn.nrjaudio.fm/adwz2/fr/30001/mp3_128.mp3",
+        "name": "NRJ",
+        "logo": "https://www.groupe-adiona.com/wp-content/uploads/2018/01/Logo-NRJ.png"
+    },
+    {
+        "value": "https://scdn.nrjaudio.fm/adwz2/fr/30601/mp3_128.mp3",
+        "name": "Nostalgie",
+        "logo": "https://play-lh.googleusercontent.com/9h9jwQQONGEHGuKQ9nBAcXeorzgJZnStMvLZ4DNBVxb4XK3TMww-7sw3_mgjXEw3Gtk"
+    },
+    {
+        "value": "https://audio.bfmtv.com/rmcradio_128.mp3",
+        "name": "RMC",
+        "logo": "https://www.radio.fr/300/rmcinfo.png"
+    },
+    {
+        "value": "https://stream.europe1.fr/europe1.mp3",
+        "name": "Europe 1",
+        "logo": "https://zerojanvier.com/wp-content/uploads/2025/01/La-redaction-d-Europe-1.png"
+    },
+    {
+        "value": " http://icecast.rtl2.fr/rtl2-1-44-128?listen=webCwsBCggNCQgLDQUGBAcGBg",
+        "name": "RTL2",
+        "logo": "https://upload.wikimedia.org/wikipedia/fr/thumb/f/fa/RTL2_logo_2015.svg/1200px-RTL2_logo_2015.svg.png"
+    },
+    {
+        "value": " http://start-sud.ice.infomaniak.ch/start-sud-high.mp3",
+        "name": "Sud Radio",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Logo_Sud_Radio_2014.svg/1200px-Logo_Sud_Radio_2014.svg.png"
     }
-] 
+]
