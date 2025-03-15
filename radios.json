@@ -90,7 +90,7 @@
         "logo": "https://www.radiofrance.fr/sites/default/files/2020-07/france_info_logo_2017.png"
     },
     {
-        "value": "http://cdn.nrjaudio.fm/audio1/fr/30001/mp3_128.mp3?origine=fluxradios",
+        "value": "http://icecast.rtl.fr/rtl-1-44-128?listen=webCwsBCggNCQgLDQUGBAcGBg",
         "name": "RTL",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/RTL_logo.svg/1200px-RTL_logo.svg.png"
     },
