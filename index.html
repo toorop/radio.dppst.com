@@ -1,44 +1,45 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lecteur Radio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/svg+xml" href="radio-logo.svg">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/svg+xml" href="radio-logo.svg" />
     <!-- Ajout de Choices.js (alternative à Select2 sans jQuery) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
-    
-</head>
-<body class="nord-light">
+  </head>
+  <body class="nord-light">
     <div class="theme-switch-wrapper">
-        <label class="theme-switch" for="theme-toggle">
-            <input type="checkbox" id="theme-toggle">
-            <span class="slider round"></span>
-        </label>
+      <label class="theme-switch" for="theme-toggle">
+        <input type="checkbox" id="theme-toggle" />
+        <span class="slider round"></span>
+      </label>
     </div>
     <div class="container">
-        <h1>Lecteur Radio</h1>
-        <div class="radio-player">
-            <div class="radio-info">
-                <img id="radio-logo" src="radio-logo.svg" alt="Logo Radio">
-                <div class="radio-details">
-                    <h2 id="radio-name">Sélectionne une radio</h2>
-                    <p id="radio-status">Arrêté</p>
-                </div>
-            </div>
-            <div class="controls">
-                <button id="play-pause" class="control-btn">▶️</button>
-                <input type="range" id="volume" min="0" max="1" step="0.01" value="0.5">
-            </div>
-            <select id="radio-select">
-                <option value="">Choisir une radio</option>
-                <!-- Les options de radio seront chargées dynamiquement depuis le fichier JSON -->
-            </select>
+      <div class="radio-player">
+        <div class="radio-info">
+          <img id="radio-logo" src="radio-logo.svg" alt="Logo Radio" />
+          <div class="radio-details">
+          <h2 id="radio-name">Sélectionne une radio</h2>
+          <p id="radio-status">Arrêté</p>
         </div>
+        <div class="controls">
+          <button id="play-pause" class="control-btn">▶️</button>
+        </div>
+      </div>
+
+        <select id="radio-select">
+          <option value="">Choisir une radio</option>
+          <!-- Les options de radio seront chargées dynamiquement depuis le fichier JSON -->
+        </select>
+      </div>
     </div>
     <audio id="audio-player"></audio>
     <script src="js/script.js"></script>
-</body>
+  </body>
 </html>
