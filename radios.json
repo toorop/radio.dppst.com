@@ -139,6 +139,11 @@
         "value":"https://icecast.radiofrance.fr/mouv-midfi.mp3",
         "name":"Le Mouv",
         "logo":"https://www.radio.fr/300/lemouv.png"
+    },
+    {
+        "value":"http://radiofg.impek.com/fg.mp3",
+        "name":"Radio FG",
+        "logo":"https://www.radio.fr/300/fg.png"
     }
     
 ]
