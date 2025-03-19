@@ -60,7 +60,7 @@
         "logo": "https://www.radio.fr/300/classic21.jpeg?version=f88d5ed6f3ba6807b04a286c90cd3f49"
     },
     {
-        "value": "http://radiomeuh.ice.infomaniak.ch/radiomeuh-128.mp3",
+        "value": "https://radiomeuh.ice.infomaniak.ch/radiomeuh-128.mp3",
         "name": "Radio Meuh",
         "logo": "https://radiomeuh.com/wp-content/uploads/2023/02/cropped-logo-meuh-2023.png"
     },
@@ -90,7 +90,7 @@
         "logo": "https://www.radiofrance.fr/sites/default/files/2020-07/france_info_logo_2017.png"
     },
     {
-        "value": "http://icecast.rtl.fr/rtl-1-44-128?listen=webCwsBCggNCQgLDQUGBAcGBg",
+        "value": "https://icecast.rtl.fr/rtl-1-44-128?listen=webCwsBCggNCQgLDQUGBAcGBg",
         "name": "RTL",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/RTL_logo.svg/1200px-RTL_logo.svg.png"
     },
@@ -115,12 +115,12 @@
         "logo": "https://zerojanvier.com/wp-content/uploads/2025/01/La-redaction-d-Europe-1.png"
     },
     {
-        "value": " http://icecast.rtl2.fr/rtl2-1-44-128?listen=webCwsBCggNCQgLDQUGBAcGBg",
+        "value": "https://icecast.rtl2.fr/rtl2-1-44-128?listen=webCwsBCggNCQgLDQUGBAcGBg",
         "name": "RTL2",
         "logo": "https://upload.wikimedia.org/wikipedia/fr/thumb/f/fa/RTL2_logo_2015.svg/1200px-RTL2_logo_2015.svg.png"
     },
     {
-        "value": " http://start-sud.ice.infomaniak.ch/start-sud-high.mp3",
+        "value": "https://start-sud.ice.infomaniak.ch/start-sud-high.mp3",
         "name": "Sud Radio",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Logo_Sud_Radio_2014.svg/1200px-Logo_Sud_Radio_2014.svg.png"
     }
