@@ -193,6 +193,8 @@ function changeRadio() {
     audioPlayer.pause();
     audioPlayer.src = streamUrl;
     audioPlayer.load();
+    
+    // Volume fixé à 1 (suppression du contrôle de volume)
     audioPlayer.volume = 1;
 
     // Lancer la lecture si nécessaire

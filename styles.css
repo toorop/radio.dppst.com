@@ -70,7 +70,8 @@ h1 {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    justify-content: flex-start;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 #radio-logo {
@@ -97,12 +98,6 @@ h1 {
     text-align: left;
 }
 
-.controls {
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: flex-end;
-}
-
 .control-btn {
     background: var(--button-bg);
     border: none;
@@ -112,30 +107,12 @@ h1 {
     font-size: 1.5rem;
     cursor: pointer;
     transition: transform 0.2s, background 0.2s;
+    flex-shrink: 0;
 }
 
 .control-btn:hover {
     transform: scale(1.1);
     background: var(--button-hover);
-}
-
-#volume {
-    width: 100%;
-    max-width: 200px;
-    margin-top: 10px;
-    -webkit-appearance: none;
-    background: var(--slider-bg);
-    border-radius: 5px;
-    height: 5px;
-}
-
-#volume::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 15px;
-    height: 15px;
-    background: var(--slider-thumb);
-    border-radius: 50%;
-    cursor: pointer;
 }
 
 #radio-select {
