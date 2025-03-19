@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lecteur Radio</title>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#88C0D0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="DPPST Radio">
+    <link rel="apple-touch-icon" href="/icons/icon-152x152.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/svg+xml" href="radio-logo.svg">
     <!-- Ajout de Choices.js (alternative à Select2 sans jQuery) -->
@@ -40,5 +46,18 @@
     </div>
     <audio id="audio-player"></audio>
     <script src="js/script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker enregistré avec succès');
+                    })
+                    .catch(error => {
+                        console.error('Erreur d'enregistrement du ServiceWorker:', error);
+                    });
+            });
+        }
+    </script>
 </body>
 </html>
