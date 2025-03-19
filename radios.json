@@ -123,5 +123,27 @@
         "value": "https://start-sud.ice.infomaniak.ch/start-sud-high.mp3",
         "name": "Sud Radio",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Logo_Sud_Radio_2014.svg/1200px-Logo_Sud_Radio_2014.svg.png"
+    },
+    {
+        "value":"https://novazz.ice.infomaniak.ch/novazz-128.mp3",
+        "name":"Radio Nova",
+        "logo":"https://www.radio.fr/300/radionova.jpeg"
+
+    },
+    {
+        "value":"http://hd.lagrosseradio.info:8000/lagrosseradio-reggae-192.mp3",
+        "name":"La Grosse Radio Reggae",
+        "logo":"https://www.radio.fr/100/lagrosseradioreggae.png"
+    },
+    {
+        "value":"https://icecast.radiofrance.fr/mouv-midfi.mp3",
+        "name":"Le Mouv",
+        "logo":"https://www.radio.fr/300/lemouv.png"
+    },
+    {
+        "value":"http://radiofg.impek.com/fg.mp3",
+        "name":"Radio FG",
+        "logo":"https://www.radio.fr/300/fg.png"
     }
+    
 ]

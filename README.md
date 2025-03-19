@@ -4,19 +4,18 @@ A modern and lightweight web radio player for streaming various radio stations.
 
 ## Features
 
-- Clean and responsive user interface
-- Icecast/Shoutcast stream support
-- Real-time metadata retrieval
-- Automatic light/dark theme
-- Volume control
-- Automatic reconnection handling
+- Clean and responsive user interface, adapting to different screen sizes.
+- Supports Icecast and Shoutcast streaming protocols.
+- Automatic light/dark theme based on user preferences or system settings.
+- Volume control for adjusting the audio output.
+- Automatic reconnection handling to maintain uninterrupted playback.
+- Ability to add and modify radio stations via the `radios.json` file.
 
 ## Technologies Used
 
 - HTML5 Audio API
-- Vanilla JavaScript
-- CSS3 with theme variables
-- Custom Icecast Metadata Player library
+- Vanilla JavaScript (ES6+)
+- CSS3 with theme variables for styling and theming
 
 ## Installation
 
@@ -46,9 +45,36 @@ radio.dppst.com/
 │   ├── script.js       # Main logic
 │   └── icecast-metadata-player.js  # Stream handler
 ├── styles.css          # Styles and themes
+├── radio-logo.svg      # Radio station logo
+├── radios.json         # Radio stations configuration
 └── doc/               # Documentation
-    ├── ameliorations.md
+    ├── ameliorations.md # List of potential improvements, see [doc/improvements.md](doc/improvements.md)
     └── proxy.md
+```
+
+## radios.json
+
+The `radios.json` file contains the configuration for the radio stations. You can add or modify radio stations by editing this file. The file should contain a JSON array of radio station objects, each with the following properties:
+
+- `name`: The name of the radio station.
+- `url`: The URL of the radio stream.
+- `logo`: The URL of the radio station logo.
+
+Example:
+
+```json
+[
+  {
+    "name": "Radio Station 1",
+    "url": "http://example.com/stream1",
+    "logo": "http://example.com/logo1.png"
+  },
+  {
+    "name": "Radio Station 2",
+    "url": "http://example.com/stream2",
+    "logo": "http://example.com/logo2.png"
+  }
+]
 ```
 
 ## Development

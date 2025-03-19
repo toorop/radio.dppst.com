@@ -1,6 +1,5 @@
 const audioPlayer = document.getElementById('audio-player');
 const playPauseBtn = document.getElementById('play-pause');
-const volumeControl = document.getElementById('volume');
 const radioSelect = document.getElementById('radio-select');
 const radioName = document.getElementById('radio-name');
 const radioStatus = document.getElementById('radio-status');
@@ -108,7 +107,6 @@ if (isDarkTheme) {
 
 // Ajouter les écouteurs d'événements
 playPauseBtn.addEventListener('click', togglePlayPause);
-volumeControl.addEventListener('input', adjustVolume);
 radioSelect.addEventListener('change', changeRadio);
 themeToggle.addEventListener('change', toggleTheme);
 
@@ -150,10 +148,6 @@ function togglePlayPause() {
     } else {
         audioPlayer.pause();
     }
-}
-
-function adjustVolume() {
-    audioPlayer.volume = volumeControl.value;
 }
 
 function changeRadio() {
@@ -199,9 +193,7 @@ function changeRadio() {
     audioPlayer.pause();
     audioPlayer.src = streamUrl;
     audioPlayer.load();
-
-    // Définir le volume
-    audioPlayer.volume = volumeControl.value;
+    audioPlayer.volume = 1;
 
     // Lancer la lecture si nécessaire
     if (shouldAutoPlay) {
