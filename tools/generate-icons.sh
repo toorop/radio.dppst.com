@@ -15,7 +15,7 @@ mkdir -p icons
 
 # Générer les icônes pour chaque taille
 for size in "${sizes[@]}"; do
-    convert  -background none   icon-512x512.png -resize ${size}x${size} icons/icon-${size}x${size}.png
+    convert  -background none   logo-app.png -resize ${size}x${size} ../icons/icon-${size}x${size}.png
 done
 
 echo "Génération des icônes terminée"
