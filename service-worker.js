@@ -4,7 +4,7 @@ const STATIC_ASSETS = [
   '/index.html',
   '/styles.css',
   '/js/script.js',
-  '/radio-logo.svg',
+  '/icons/radio-logo.svg',
   '/radios.json',
   'https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css',
   'https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js'

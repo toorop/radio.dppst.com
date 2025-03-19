@@ -136,7 +136,7 @@ audioPlayer.addEventListener('error', (e) => {
 
 // Gestion de l'erreur du logo
 radioLogo.addEventListener('error', () => {
-    radioLogo.src = 'radio-logo.svg'; // Fallback au SVG si l'image ne charge pas
+    radioLogo.src = 'icons/radio-logo.svg'; // Fallback au SVG si l'image ne charge pas
 });
 
 function togglePlayPause() {
@@ -161,7 +161,7 @@ function changeRadio() {
     if (!selectedOption.value) {
         radioName.textContent = 'Sélectionne une radio';
         radioStatus.textContent = 'Arrêté';
-        radioLogo.src = 'radio-logo.svg';
+        radioLogo.src = 'icons/radio-logo.svg';
         
         // Arrêter l'audio
         audioPlayer.pause();
