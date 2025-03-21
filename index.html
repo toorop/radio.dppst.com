@@ -43,7 +43,7 @@
         </div>
     </div>
     <audio id="audio-player"></audio>
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
@@ -52,7 +52,7 @@
                         console.log('ServiceWorker enregistré avec succès');
                     })
                     .catch(error => {
-                        console.error('Erreur d'enregistrement du ServiceWorker:', error);
+                        console.error("Erreur d'enregistrement du ServiceWorker:", error);
                     });
             });
         }
