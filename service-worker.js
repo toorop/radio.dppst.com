@@ -1,4 +1,4 @@
-const CACHE_NAME = 'radio-dppst-v1';
+const CACHE_NAME = 'radio-dppst-v1.0.1';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
